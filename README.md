@@ -1,97 +1,124 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# KredentiaApp - Sistema de Credenciales Digitales
 
-# Getting Started
+## Descripción
+KredentiaApp es una aplicación móvil desarrollada en React Native para gestionar credenciales y documentos digitales utilizando tecnología blockchain (Avalanche) e IPFS.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+## Funcionalidades Implementadas
 
-## Step 1: Start Metro
+### 🔍 Vista QR Scanner (QRScannerScreen.tsx)
+- Escáner de códigos QR para unirse a organizaciones
+- Simulación de detección de QR
+- Opción para seleccionar QR desde galería
+- Navegación a la vista de selección de instituciones
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+### 🏛️ Vista Selección de Instituciones (InstitutionSelectorScreen.tsx)
+- Selección entre diferentes instituciones (UMSA, CNS, SSU)
+- Botón de inicio (home)
+- Botón "+" para abrir el escáner QR
+- Navegación al dashboard principal
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+### 🏠 Vista Home Principal (HomeScreen.tsx)
+- Saludo personalizado al usuario
+- Panel de resumen con estadísticas de documentos
+- Lista de documentos recientes
+- Botón de notificaciones con contador
+- Navegación a detalles de documentos
 
-```sh
-# Using npm
-npm start
+### 🔔 Vista Notificaciones (NotificationsScreen.tsx)
+- Lista de notificaciones de firmas de documentos
+- Contador de notificaciones no leídas
+- Navegación a documentos relacionados
+- Timestamps de notificaciones
 
-# OR using Yarn
-yarn start
+### 📄 Vista Detalle de Documento (DocumentDetailScreen.tsx)
+- Información completa del documento
+- Barra de progreso de firmas
+- Lista de firmantes con estados
+- Botón para abrir certificado IPFS
+- Información técnica con botones de copiar al portapapeles
+
+### 📄 Vista Lista de Documentos (DocumentsListScreen.tsx)
+- Lista completa de documentos del usuario
+- Estados: Completado, Pendiente, Rechazado
+- Barras de progreso
+- Navegación a detalles de documento
+
+### 🆔 Vista Detalle de Identificación (IdentificationDetailScreen.tsx)
+- Tarjeta de identificación interactiva (frente/dorso)
+- Información del portador
+- Datos técnicos (IPFS, blockchain)
+- Interfaz táctil para voltear la tarjeta
+
+### 🆔 Vista Lista de Identificaciones (IdentificationsListScreen.tsx)
+- Lista de identificaciones/credenciales
+- Estados: Activo, Expirado
+- Preview de las tarjetas
+- Navegación a detalle de identificación
+
+### ⚙️ Vista Configuraciones (SettingsScreen.tsx)
+- Perfil del usuario con imagen
+- Dirección de wallet con botón copiar
+- Configuraciones de seguridad
+- Opción para cambiar institución
+- Información de la aplicación
+
+## Estructura de Archivos
+
+```
+src/
+├── components/          # Componentes reutilizables
+├── navigation/          # Configuración de navegación
+│   └── AppNavigator.tsx
+├── screens/            # Pantallas de la aplicación
+│   ├── QRScannerScreen.tsx
+│   ├── InstitutionSelectorScreen.tsx
+│   ├── HomeScreen.tsx
+│   ├── NotificationsScreen.tsx
+│   ├── DocumentDetailScreen.tsx
+│   ├── DocumentsListScreen.tsx
+│   ├── IdentificationDetailScreen.tsx
+│   ├── IdentificationsListScreen.tsx
+│   └── SettingsScreen.tsx
+├── types/              # Definiciones de tipos TypeScript
+│   └── index.ts
+└── utils/              # Utilidades y datos mock
+    └── mockData.ts
 ```
 
-## Step 2: Build and run your app
+## Instalación y Ejecución
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+```bash
+# Instalar dependencias
+npm install
 
-### Android
-
-```sh
-# Using npm
+# Para Android
 npm run android
 
-# OR using Yarn
-yarn android
-```
-
-### iOS
-
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
-
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
-```sh
-bundle install
-```
-
-Then, and every time you update your native dependencies, run:
-
-```sh
-bundle exec pod install
-```
-
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
-
-```sh
-# Using npm
+# Para iOS
 npm run ios
 
-# OR using Yarn
-yarn ios
+# Iniciar el servidor de desarrollo
+npm start
 ```
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+## Próximos Pasos
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+1. **Resolver errores de TypeScript**: Configurar correctamente JSX y tipos
+2. **Implementar navegación real**: React Navigation completa
+3. **Integración blockchain**: Conectar con Avalanche testnet
+4. **Escáner QR real**: Implementar react-native-camera
+5. **Autenticación**: Sistema de login/registro
+6. **Notificaciones push**: Implementar notificaciones reales
+7. **Tests**: Añadir tests unitarios y de integración
 
-## Step 3: Modify your app
+## Tecnologías Utilizadas
 
-Now that you have successfully run the app, let's make changes!
+- React Native 0.81.0
+- TypeScript
+- React Navigation (preparado)
+- IPFS (mockup)
+- Avalanche/Blockchain (mockup)
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+## Notas de Desarrollo
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
-
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+La aplicación está estructurada siguiendo las mejores prácticas de React Native con TypeScript. Todas las vistas están diseñadas según los mockups proporcionados y están listas para integración con servicios reales de blockchain e IPFS.
